@@ -7,8 +7,10 @@ database_connection = {
 
 case settings['database']['type']
 when 'mysql'
-  include_recipe 'mysql::server'
-  include_recipe 'database::mysql'
+  # We used to include these recipes here - these have since become library cookbooks, and 
+  # so these includes are unnecessary - and will in fact cause failures / are incorrect.
+  # include_recipe 'mysql::server'
+  # include_recipe 'database::mysql'
   database_connection.merge!(:username => 'root', :password => node['mysql']['server_root_password'])
 
   mysql_database settings['database']['name'] do
