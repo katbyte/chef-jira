@@ -21,6 +21,7 @@ depends 'database'
 depends 'java'
 depends 'mysql'
 depends 'mysql_connector'
+depends 'mysql2_chef_gem', '~> 1.0.1'
 depends 'postgresql'
 
 suggests 'tomcat'
