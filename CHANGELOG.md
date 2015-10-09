@@ -1,3 +1,8 @@
+## x.y.z (pending)
+
+* Added support for PostgreSQL 9.2+ in `dbconfig.xml`.
+  [[GH-14]](https://github.com/afklm/chef_jira/issues/14)
+
 ## 2.1.0
 
 * MIGRATED: renamed cookbook jira -> chef_jira
