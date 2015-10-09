@@ -1,3 +1,8 @@
+## x.y.z (pending)
+
+* Set Tomcat `proxyName`/`proxyPort` even without SSL.
+  [[GH-11]](https://github.com/afklm/chef_jira/issues/11)
+
 ## 2.1.0
 
 * MIGRATED: renamed cookbook jira -> chef_jira
