@@ -156,8 +156,8 @@ file | Location of JIRA WAR file for deployment | String | `node['jira']['build'
 
 ## LWRPs
 
-* jira_jars: JIRA JARs download/deploy
-* jira_war: JIRA WAR download/build
+* chef_jira_jars: JIRA JARs download/deploy
+* chef_jira_war: JIRA WAR download/build
 
 ### Getting Started
 
@@ -165,14 +165,14 @@ Here's a quick example of downloading and building JIRA WAR:
 
 ```ruby
 # Download and build JIRA WAR
-jira_war node['jira']['install_path'] do
+chef_jira_war node['jira']['install_path'] do
   action :build
 end
 ```
 
 See full documentation for each LWRP and action below for more information.
 
-### jira_jars
+### chef_jira_jars
 
 Below are the available actions for the LWRP, default being `download`.
 
@@ -188,7 +188,7 @@ lib_path | Location of container server libraries | String | `node['jira']['lib_
 Deploy custom list of JIRA JARs to custom location:
 
 ```ruby
-jira_jars '/opt/atlassian/jira-jars' do
+chef_jira_jars '/opt/atlassian/jira-jars' do
   deploy_jars %w{carol carol-properties hsqldb jonas_timer jotm jotm-iiops_stubs jotm-jmrp_stubs jta objectweb-datasource ots-jts xapool}
   lib_path '/usr/local/my-special-snowflake-tomcat/lib/'
   action :deploy
@@ -207,12 +207,12 @@ version | Version of JIRA JARS to download | String | `node['jira']['jars']['ver
 Download custom version of JIRA JARs:
 
 ```ruby
-jira_jars '/opt/atlassian/jira-jars' do
+chef_jira_jars '/opt/atlassian/jira-jars' do
   version '6.0'
 end
 ```
 
-### jira_war
+### chef_jira_war
 
 Below are the available actions for the LWRP, default being `download`.
 
@@ -229,7 +229,7 @@ targets | Ant targets for build | String | `node['jira']['build']['targets']`
 Run custom ant targets for JIRA WAR build:
 
 ```ruby
-jira_war '/opt/atlassian/jira' do
+chef_jira_war '/opt/atlassian/jira' do
   targets 'generic'
   action :build
 end
@@ -248,7 +248,7 @@ version | Version of JIRA WAR to download | String | `node['jira']['version']`
 Download custom version of JIRA WAR:
 
 ```ruby
-jira_war '/opt/atlassian/jira' do
+chef_jira_war '/opt/atlassian/jira' do
   version '6.1.4'
 end
 ```
@@ -355,8 +355,8 @@ There are a couple pieces necessary for successful JIRA WAR deployment:
 Atlassian supports deploying WAR only on Tomcat 6/7 and the cookbook handles this case (recommended usage with Opscode Tomcat cookbook), however if you're feeling adventurous, this process may be workable for other container servers with some slight configuration and a wrapper cookbook.
 
 Cookbook handles the above steps with:
-* WAR file: built via build_war recipe (using jira_war LWRP) or location up to you with a wrapper cookbook and `node['jira']['war']['file']` set appropriately
-* JIRA JARs: container_server_jars recipe (using jira_jars LWRP) with configuration in `node['jira']['jars']` attributes and `node['jira']['install_type']` set to war
+* WAR file: built via build_war recipe (using chef_jira_war LWRP) or location up to you with a wrapper cookbook and `node['jira']['war']['file']` set appropriately
+* JIRA JARs: container_server_jars recipe (using chef_jira_jars LWRP) with configuration in `node['jira']['jars']` attributes and `node['jira']['install_type']` set to war
 * Database JARs: container_server_jars recipe and appropriate database type needing additional JARs
 * Configuration of container server: container_server_configuration recipe, which installs context to Tomcat if `node['jira']['container_server']['name']` is tomcat.
 

@@ -1,1 +1,1 @@
-jira_war node['jira']['install_path']
+chef_jira_war node['jira']['install_path']
