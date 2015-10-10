@@ -1,3 +1,8 @@
+## x.y.z (pending)
+
+* Added service restart when ark resource changes.
+  [[GH-16]](https://github.com/afklm/chef_jira/issues/16)
+
 ## 2.1.0
 
 * MIGRATED: renamed cookbook jira -> chef_jira

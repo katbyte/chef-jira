@@ -47,4 +47,5 @@ ark 'jira' do
   version node['jira']['version']
   owner node['jira']['user']
   group node['jira']['user']
+  notifies :restart, 'service[jira]'
 end
