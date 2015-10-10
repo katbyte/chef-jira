@@ -1,3 +1,8 @@
+## x.y.z (pending)
+
+* Removed unnecessary non-dynamic `web.xml` template.
+  [[GH-10]](https://github.com/afklm/chef_jira/issues/10)
+
 ## 2.1.0
 
 * MIGRATED: renamed cookbook jira -> chef_jira

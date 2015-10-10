@@ -35,12 +35,5 @@ when 'tomcat'
       variables :tomcat => settings['tomcat']
       notifies :restart, 'service[jira]', :delayed
     end
-
-    template "#{node['jira']['install_path']}/conf/web.xml" do
-      source 'tomcat/web.xml.erb'
-      owner node['jira']['user']
-      mode '0644'
-      notifies :restart, 'service[jira]', :delayed
-    end
   end
 end
