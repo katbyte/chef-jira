@@ -31,8 +31,18 @@
 
     <!--APR library loader. Documentation at /docs/apr.html -->
     <Listener className="org.apache.catalina.core.AprLifecycleListener" SSLEngine="on"/>
+    <% if node['jira']['version'].split('.')[0].to_i < 7 -%>
     <!--Initialize Jasper prior to webapps are loaded. Documentation at /docs/jasper-howto.html -->
     <Listener className="org.apache.catalina.core.JasperListener"/>
+    <% else -%>
+    <Listener className="org.apache.catalina.startup.VersionLoggerListener" />
+    <!-- Security listener. Documentation at /docs/config/listeners.html
+    <Listener className="org.apache.catalina.security.SecurityListener" />
+    -->
+    <!-- Prevent memory leaks due to use of particular java/javax APIs-->
+    <Listener className="org.apache.catalina.core.JreMemoryLeakPreventionListener" />
+    <Listener className="org.apache.catalina.core.ThreadLocalLeakPreventionListener" />
+    <% end -%>
     <Listener className="org.apache.catalina.mbeans.GlobalResourcesLifecycleListener"/>
 
     <!-- Global JNDI resources

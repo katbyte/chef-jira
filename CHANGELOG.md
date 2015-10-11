@@ -1,3 +1,8 @@
+## x.y.z (pending)
+
+* Added minimal Jira 7 compatibility via `server.xml` template.
+  [[GH-12]](https://github.com/afklm/chef_jira/issues/12)
+
 ## 2.1.0
 
 * MIGRATED: renamed cookbook jira -> chef_jira
