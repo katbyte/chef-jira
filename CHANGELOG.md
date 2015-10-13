@@ -12,6 +12,8 @@
   [[GH-11]](https://github.com/afklm/chef_jira/issues/11)
 * Removed unnecessary non-dynamic `web.xml` template.
   [[GH-10]](https://github.com/afklm/chef_jira/issues/10)
+* Added Jira 7.0.0 compatibility.
+  [[GH-12]](https://github.com/afklm/chef_jira/issues/10)
 
 
 ## 2.1.0

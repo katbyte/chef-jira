@@ -29,10 +29,9 @@
 -->
 <Server port="8005" shutdown="SHUTDOWN">
 
+    <%= render "tomcat/server.jira-#{@template_partial_version}.fragment.xml.erb", option: {} %>
     <!--APR library loader. Documentation at /docs/apr.html -->
     <Listener className="org.apache.catalina.core.AprLifecycleListener" SSLEngine="on"/>
-    <!--Initialize Jasper prior to webapps are loaded. Documentation at /docs/jasper-howto.html -->
-    <Listener className="org.apache.catalina.core.JasperListener"/>
     <Listener className="org.apache.catalina.mbeans.GlobalResourcesLifecycleListener"/>
 
     <!-- Global JNDI resources

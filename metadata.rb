@@ -23,8 +23,6 @@ depends 'mysql'
 depends 'mysql_connector'
 depends 'postgresql'
 
-suggests 'tomcat'
-
 supports 'centos', '>= 6.0'
 supports 'redhat', '>= 6.0'
 supports 'ubuntu', '>= 12.04'
