@@ -14,6 +14,7 @@ template "#{node['jira']['install_path']}/bin/setenv.sh" do
   notifies :restart, 'service[jira]', :delayed
 end
 
+
 template "#{node['jira']['install_path']}/conf/server.xml" do
   source 'tomcat/server.xml.erb'
   owner node['jira']['user']

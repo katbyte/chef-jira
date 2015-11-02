@@ -17,7 +17,7 @@ Installs/Configures Atlassian JIRA. Please see [COMPATIBILITY.md](COMPATIBILITY.
 
 ### Platforms
 
-* CentOS 6
+* CentOS 6,7
 * RHEL 6
 * Ubuntu 12.04
 
