@@ -32,7 +32,9 @@
     <!--APR library loader. Documentation at /docs/apr.html -->
     <Listener className="org.apache.catalina.core.AprLifecycleListener" SSLEngine="on"/>
     <!--Initialize Jasper prior to webapps are loaded. Documentation at /docs/jasper-howto.html -->
+    <% if Chef::VersionConstraint.new("< 7.0").include?(node['jira']['version']) %>
     <Listener className="org.apache.catalina.core.JasperListener"/>
+    <% end %>
     <Listener className="org.apache.catalina.mbeans.GlobalResourcesLifecycleListener"/>
 
     <!-- Global JNDI resources
