@@ -1,5 +1,9 @@
 ## x.y.z (pending)
 
+* Converted `virtual_host_name` and `virtual_host_alias` derived attrs
+  into helper methods for templates, etc.
+[[#45]](https://github.com/afklm/jira/issues/45)
+
 ## 2.7.0
 
 * Added support for JIRA 7.0

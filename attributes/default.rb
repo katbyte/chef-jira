@@ -15,8 +15,11 @@ default['jira']['checksum'] = nil
 default['jira']['apache2']['access_log']         = ''
 default['jira']['apache2']['error_log']          = ''
 default['jira']['apache2']['port']               = 80
-default['jira']['apache2']['virtual_host_name']  = node['fqdn']
-default['jira']['apache2']['virtual_host_alias'] = node['hostname']
+
+# Defaults are automatically selected from fqdn and hostname via helper functions
+default['jira']['apache2']['virtual_host_name']  = nil # node['fqdn']
+default['jira']['apache2']['virtual_host_alias'] = nil # node['hostname']
+
 
 default['jira']['apache2']['ssl']['access_log']       = ''
 default['jira']['apache2']['ssl']['error_log']        = ''

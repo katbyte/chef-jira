@@ -71,7 +71,7 @@
                    maxHttpHeaderSize="8192"
                    protocol="HTTP/1.1"
                    useBodyEncodingForURI="true"
-                   proxyName="<%= node['jira']['apache2']['virtual_host_name'] %>"
+                   proxyName="<%= jira_virtual_host_name %>"
                    secure="true"
                    scheme="https"
                    proxyPort="<%= node['jira']['apache2']['ssl']['port'] %>"
