@@ -6,6 +6,8 @@ driver:
 
 provisioner:
   name: chef_zero
+  client_rb:
+    diff_disabled: true
 
 platforms:
 - name: centos-6
