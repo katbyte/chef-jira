@@ -45,6 +45,10 @@ when 'mysql'
     action [:create, :grant]
   end
 when 'postgresql'
+  # TODO: Should this be in attributes file?
+  if node['platform_family'] == 'rhel'
+    node.default['postgresql']['enable_pgdg_yum'] = true
+  end
   include_recipe 'postgresql::server'
   include_recipe 'database::postgresql'
   database_connection.merge!(:username => 'postgres', :password => node['postgresql']['password']['postgres'])

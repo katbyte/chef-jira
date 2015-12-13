@@ -1,9 +1,7 @@
 require 'spec_helper'
 
 describe 'Postgresql' do
-  describe port(5432) do
-    it { should be_listening }
-  end
+  it_behaves_like 'postgresql'
 end
 
 describe 'JIRA' do

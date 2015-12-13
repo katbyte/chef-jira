@@ -20,7 +20,10 @@ depends 'java'
 depends 'mysql', '~> 6.0'
 depends 'mysql_connector'
 depends 'mysql2_chef_gem'
-depends 'postgresql'
+# Due to revert of PR hw-cookbooks/postgresql#201
+# See: https://github.com/hw-cookbooks/postgresql/pull/201
+# See: https://github.com/hw-cookbooks/postgresql/commit/b76660bb225b6b09c8bd54273abe5092164114a6
+depends 'postgresql', '3.4.16'
 
 supports 'centos', '>= 6.0'
 supports 'redhat', '>= 6.0'

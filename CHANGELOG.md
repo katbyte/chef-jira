@@ -11,6 +11,11 @@
   [[GH-57]](https://github.com/afklm/jira/issues/57)
 * Fix standalone directory perms and accompanying CentOS bug.
   [[GH-57]](https://github.com/afklm/jira/issues/57)
+* Lock `postgresql` cookbook to v3.4.16 so that its derived attributes
+  don't mess with our setting of psql version.
+  [[GH-60]](https://github.com/afklm/jira/issues/60)
+* Added tests for proper psql version.
+  [[GH-60]](https://github.com/afklm/jira/issues/60)
 
 ## 2.7.3
 

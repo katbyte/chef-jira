@@ -15,10 +15,16 @@ platforms:
     box: bento/centos-6.7 # vagrant
     image: centos-6-5-x64 # digitalocean
   attributes:
+    # Required as node[:fqdn] is broken on this platform
+    # Context: https://github.com/chef/ohai/pull/648#issuecomment-161147811
     jira:
       apache2:
-        virtual_host_name: localhost
-        virtual_host_alias: localhost
+        virtual_host_name: jira.example.com
+        virtual_host_alias: jira.example.com
+    # Require >= 9.0 for recent Jira versions. This platform doesn't satisfy
+    # by default. (We validate this constraint in postgres test suites.)
+    postgresql:
+      version: '9.0'
 
 - name: ubuntu-12.04
   driver_config:
@@ -69,6 +75,7 @@ suites:
 - name: installer-postgresql
   run_list:
   - recipe[jira]
+  - recipe[test-helper]
   attributes:
     jira:
       install_type: installer
@@ -97,6 +104,7 @@ suites:
   run_list:
   - recipe[java]
   - recipe[jira]
+  - recipe[test-helper]
   attributes:
     java:
       install_flavor: oracle
