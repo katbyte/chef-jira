@@ -66,24 +66,24 @@ module Jira
       base_url = 'https://www.atlassian.com/software/jira/downloads/binary'
       version  = node['jira']['version']
 
-      # JIRA versions >= 7.0.0 have different flavors
-      # Also (at this time) the URLs for flavors unfortunately differ
-      if Gem::Version.new(version) < Gem::Version.new(7)
-        product = "#{base_url}/atlassian-jira-#{version}"
-      elsif Gem::Version.new(version) >= Gem::Version.new("7.1.9")
-        product = "#{base_url}/atlassian-jira-#{node['jira']['flavor']}-#{version}"
-      else
-        case node['jira']['flavor']
-        when 'software'
-          product = "#{base_url}/atlassian-jira-#{node['jira']['flavor']}-#{version}-jira-#{version}"
-        when 'core'
-          product = "#{base_url}/atlassian-jira-#{node['jira']['flavor']}-#{version}"
-        end
-      end
-      
       # if people are installing servicedesk use a dedicated url pattern
       if node['jira']['flavor'] == 'servicedesk'
         product = "#{base_url}/atlassian-#{node['jira']['flavor']}-#{version}"
+      else
+        # JIRA versions >= 7.0.0 have different flavors
+        # Also (at this time) the URLs for flavors unfortunately differ
+        if Gem::Version.new(version) < Gem::Version.new(7)
+          product = "#{base_url}/atlassian-jira-#{version}"
+        elsif Gem::Version.new(version) >= Gem::Version.new("7.1.9")
+          product = "#{base_url}/atlassian-jira-#{node['jira']['flavor']}-#{version}"
+        else
+          case node['jira']['flavor']
+          when 'software'
+            product = "#{base_url}/atlassian-jira-#{node['jira']['flavor']}-#{version}-jira-#{version}"
+          when 'core'
+            product = "#{base_url}/atlassian-jira-#{node['jira']['flavor']}-#{version}"
+          end
+        end
       end
 
       # Return actual URL
