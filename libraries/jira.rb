@@ -80,6 +80,11 @@ module Jira
           product = "#{base_url}/atlassian-jira-#{node['jira']['flavor']}-#{version}"
         end
       end
+      
+      # if people are installing servicedesk use a dedicated url pattern
+      if node['jira']['flavor'] == 'servicedesk'
+        product = "#{base_url}/atlassian-#{node['jira']['flavor']}-#{version}"
+      end
 
       # Return actual URL
       case node['jira']['install_type']
@@ -265,6 +270,22 @@ module Jira
             'x32' => '98d41db73b342c95a08fec233ddfb5da928875366e1cfea941be7f95bf0cf126',
             'x64' => '02d5d3adecc4d218ff258ad69ac39390678434359638d1785e78562178f39408',
             'tar' => 'f03f2a8dd42c4b5f03918b326f14d7339f16f60fee0fa4a4d9c2e04c82dbbed2'
+          }
+        },
+        '7.2.0' => {
+          'core' => {
+            'x32' => 'c3a02583c7498d9fcf6dd92e73b2e0390ef2a0ff03edb5e1396fae3c23bd2d51',
+            'x64' => '42a7ee7379c46d6cbdda498b0a702a000f2806f2153ac132f1645bfe2f39e576'
+          },
+          'software' => {
+            'x32' => 'e6f3369c4ad2788a82e5ca73762076a66c8de149b4e8a8ca14d95e3721f6304b',
+            'x64' => 'ba23f268aff987d6110406dc0d2fa4658c6584db7586755f4fa30cb1a01ae43f'
+          }
+        },
+        '3.2.0' => {
+          'servicedesk' => {
+            'x32' => '098bc88803aed26940a79f37108f1706a062229922950d22ee40c5903644c60e',
+            'x64' => 'd2f123ee324046e0178ce991125cad77a0c5f384237a2c7f59657af0c6b86578'
           }
         }
       }
