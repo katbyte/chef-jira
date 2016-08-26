@@ -70,6 +70,8 @@ module Jira
       # Also (at this time) the URLs for flavors unfortunately differ
       if Gem::Version.new(version) < Gem::Version.new(7)
         product = "#{base_url}/atlassian-jira-#{version}"
+      elsif Gem::Version.new(version) >= Gem::Version.new("7.1.9")
+        product = "#{base_url}/atlassian-jira-#{node['jira']['flavor']}-#{version}"
       else
         case node['jira']['flavor']
         when 'software'
