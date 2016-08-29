@@ -65,10 +65,15 @@ module Jira
 
       base_url = 'https://www.atlassian.com/software/jira/downloads/binary'
       version  = node['jira']['version']
+      servicedesk_version  = node['servicedesk']['version']
 
       # if people are installing servicedesk use a dedicated url pattern
-      if node['jira']['flavor'] == 'servicedesk'
-        product = "#{base_url}/atlassian-#{node['jira']['flavor']}-#{version}"
+      if (node['jira']['flavor'] == 'servicedesk') && (Gem::Version.new(servicedesk_version) <= Gem::Version.new("3.1.7"))
+        log "Servicedesk #{servicedesk_version} detected detected"
+        product = "#{base_url}/atlassian-#{node['jira']['flavor']}-#{servicedesk_version}-jira-#{version}"
+      elsif node['jira']['flavor'] == 'servicedesk'
+        log "service desk #{servicedesk_version} detected"
+        product = "#{base_url}/atlassian-#{node['jira']['flavor']}-#{servicedesk_version}"
       else
         # JIRA versions >= 7.0.0 have different flavors
         # Also (at this time) the URLs for flavors unfortunately differ
@@ -106,6 +111,7 @@ module Jira
 
       version = node['jira']['version']
       flavor  = node['jira']['flavor']
+      servicedesk_version = node['servicedesk']['version']
 
       if Gem::Version.new(version) < Gem::Version.new(7)
         sums = jira_checksum_map[version]
@@ -258,6 +264,10 @@ module Jira
             'x32' => '57035f4c826abf352e3ef60431602a8753cc58fe98b35f6fa72db940f6e28c78',
             'x64' => '08f49dcfec3b0764a21d318363c2a72780c52c3e95823ade0bab233dcc36f638',
             'tar' => '2cb08d754072293a23906d7db7ec4bce09a53d783e27145e416f63fd205e59c1'
+          },
+          'servicedesk' => {
+            'x32' => '9d1954c7e3502be656b4f69659e7ba937762bdf83a4201fcad0815bca7bb829a',
+            'x64' => '35e11db8d870bef0dfb4c14c2e6e0f6d8c10326f1adde2865f6ab859cb714f7a'
           }
         },
         '7.1.9' => {
