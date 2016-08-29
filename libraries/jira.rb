@@ -69,10 +69,10 @@ module Jira
 
       # if people are installing servicedesk use a dedicated url pattern
       if (node['jira']['flavor'] == 'servicedesk') && (Gem::Version.new(servicedesk_version) <= Gem::Version.new("3.1.7"))
-        log "Servicedesk #{servicedesk_version} detected detected"
+        print "Servicedesk #{servicedesk_version} detected detected"
         product = "#{base_url}/atlassian-#{node['jira']['flavor']}-#{servicedesk_version}-jira-#{version}"
       elsif node['jira']['flavor'] == 'servicedesk'
-        log "service desk #{servicedesk_version} detected"
+        print "service desk #{servicedesk_version} detected"
         product = "#{base_url}/atlassian-#{node['jira']['flavor']}-#{servicedesk_version}"
       else
         # JIRA versions >= 7.0.0 have different flavors
