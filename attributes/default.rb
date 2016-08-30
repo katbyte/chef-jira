@@ -22,8 +22,8 @@ default['jira']['autotune']['type']    = 'mixed'
 # Defaults are automatically selected from version via helper functions
 default['jira']['url']      = nil
 default['jira']['checksum'] = nil
-node['jira']['apache2']['ssl']['enable'] = true
-node['jira']['apache2']['ext_proxy']['enabled'] = false
+default['jira']['apache2']['ssl']['enable'] = true
+default['jira']['apache2']['ext_proxy']['enabled'] = false
 default['jira']['apache2']['template_cookbook']  = 'jira'
 default['jira']['apache2']['access_log']         = ''
 default['jira']['apache2']['error_log']          = ''
