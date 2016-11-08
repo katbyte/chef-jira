@@ -297,6 +297,12 @@ module Jira
             'x32' => '098bc88803aed26940a79f37108f1706a062229922950d22ee40c5903644c60e',
             'x64' => 'd2f123ee324046e0178ce991125cad77a0c5f384237a2c7f59657af0c6b86578'
           }
+        },
+        '3.2.4' => {
+          'servicedesk' => {
+            'x32' => '8d3830a74edef939f786bed35f856d41b9e50be4e137eb5926e694b7bcc7e947',
+            'x64' => '4ee810e5a4fae90cf892e29047ee783cd8b67f8889b81245a4e1dd1e55bb081b'
+          }
         }
       }
     end
