@@ -2,6 +2,7 @@ default['jira']['home_path']          = '/var/atlassian/application-data/jira'
 default['jira']['install_path']       = '/opt/atlassian/jira'
 default['jira']['install_type']       = 'installer'
 default['jira']['version']            = '7.1.7'
+default['servicedesk']['version']            = '3.2.0'
 default['jira']['flavor']             = 'software'
 default['jira']['user']               = 'jira'
 default['jira']['group']              = 'jira'
@@ -35,7 +36,7 @@ default['jira']['apache2']['ssl']['error_log']        = ''
 default['jira']['apache2']['ssl']['chain_file']       = ''
 default['jira']['apache2']['ssl']['port']             = 443
 
-default['apache']['listen'] |= [ "*:#{node['jira']['apache2']['port']}", "*:#{node['jira']['apache2']['ssl']['port']}" ]
+default['apache']['listen'] = [ "*:#{node['jira']['apache2']['port']}", "*:#{node['jira']['apache2']['ssl']['port']}" ]
 
 case node['platform_family']
 when 'rhel'

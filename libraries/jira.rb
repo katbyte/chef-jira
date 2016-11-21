@@ -65,17 +65,29 @@ module Jira
 
       base_url = 'https://www.atlassian.com/software/jira/downloads/binary'
       version  = node['jira']['version']
+      servicedesk_version  = node['servicedesk']['version']
 
-      # JIRA versions >= 7.0.0 have different flavors
-      # Also (at this time) the URLs for flavors unfortunately differ
-      if Gem::Version.new(version) < Gem::Version.new(7)
-        product = "#{base_url}/atlassian-jira-#{version}"
+      # if people are installing servicedesk use a dedicated url pattern
+      if (node['jira']['flavor'] == 'servicedesk') && (Gem::Version.new(servicedesk_version) <= Gem::Version.new("3.1.7"))
+        print "Servicedesk #{servicedesk_version} detected detected"
+        product = "#{base_url}/atlassian-#{node['jira']['flavor']}-#{servicedesk_version}-jira-#{version}"
+      elsif node['jira']['flavor'] == 'servicedesk'
+        print "service desk #{servicedesk_version} detected"
+        product = "#{base_url}/atlassian-#{node['jira']['flavor']}-#{servicedesk_version}"
       else
-        case node['jira']['flavor']
-        when 'software'
-          product = "#{base_url}/atlassian-jira-#{node['jira']['flavor']}-#{version}-jira-#{version}"
-        when 'core'
+        # JIRA versions >= 7.0.0 have different flavors
+        # Also (at this time) the URLs for flavors unfortunately differ
+        if Gem::Version.new(version) < Gem::Version.new(7)
+          product = "#{base_url}/atlassian-jira-#{version}"
+        elsif Gem::Version.new(version) >= Gem::Version.new("7.1.9")
           product = "#{base_url}/atlassian-jira-#{node['jira']['flavor']}-#{version}"
+        else
+          case node['jira']['flavor']
+          when 'software'
+            product = "#{base_url}/atlassian-jira-#{node['jira']['flavor']}-#{version}-jira-#{version}"
+          when 'core'
+            product = "#{base_url}/atlassian-jira-#{node['jira']['flavor']}-#{version}"
+          end
         end
       end
 
@@ -99,6 +111,7 @@ module Jira
 
       version = node['jira']['version']
       flavor  = node['jira']['flavor']
+      servicedesk_version = node['servicedesk']['version']
 
       if Gem::Version.new(version) < Gem::Version.new(7)
         sums = jira_checksum_map[version]
@@ -251,6 +264,10 @@ module Jira
             'x32' => '57035f4c826abf352e3ef60431602a8753cc58fe98b35f6fa72db940f6e28c78',
             'x64' => '08f49dcfec3b0764a21d318363c2a72780c52c3e95823ade0bab233dcc36f638',
             'tar' => '2cb08d754072293a23906d7db7ec4bce09a53d783e27145e416f63fd205e59c1'
+          },
+          'servicedesk' => {
+            'x32' => '9d1954c7e3502be656b4f69659e7ba937762bdf83a4201fcad0815bca7bb829a',
+            'x64' => '35e11db8d870bef0dfb4c14c2e6e0f6d8c10326f1adde2865f6ab859cb714f7a'
           }
         },
         '7.1.9' => {
@@ -263,6 +280,28 @@ module Jira
             'x32' => '98d41db73b342c95a08fec233ddfb5da928875366e1cfea941be7f95bf0cf126',
             'x64' => '02d5d3adecc4d218ff258ad69ac39390678434359638d1785e78562178f39408',
             'tar' => 'f03f2a8dd42c4b5f03918b326f14d7339f16f60fee0fa4a4d9c2e04c82dbbed2'
+          }
+        },
+        '7.2.0' => {
+          'core' => {
+            'x32' => 'c3a02583c7498d9fcf6dd92e73b2e0390ef2a0ff03edb5e1396fae3c23bd2d51',
+            'x64' => '42a7ee7379c46d6cbdda498b0a702a000f2806f2153ac132f1645bfe2f39e576'
+          },
+          'software' => {
+            'x32' => 'e6f3369c4ad2788a82e5ca73762076a66c8de149b4e8a8ca14d95e3721f6304b',
+            'x64' => 'ba23f268aff987d6110406dc0d2fa4658c6584db7586755f4fa30cb1a01ae43f'
+          }
+        },
+        '3.2.0' => {
+          'servicedesk' => {
+            'x32' => '098bc88803aed26940a79f37108f1706a062229922950d22ee40c5903644c60e',
+            'x64' => 'd2f123ee324046e0178ce991125cad77a0c5f384237a2c7f59657af0c6b86578'
+          }
+        },
+        '3.2.4' => {
+          'servicedesk' => {
+            'x32' => '8d3830a74edef939f786bed35f856d41b9e50be4e137eb5926e694b7bcc7e947',
+            'x64' => '4ee810e5a4fae90cf892e29047ee783cd8b67f8889b81245a4e1dd1e55bb081b'
           }
         }
       }

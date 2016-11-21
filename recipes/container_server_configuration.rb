@@ -23,4 +23,5 @@ template "#{node['jira']['install_path']}/conf/server.xml" do
     template_partial_version: Gem::Version.new(node['jira']['version']).segments.first
   )
   notifies :restart, 'service[jira]', :delayed
+  not_if { node['jira']['flavor'] == 'servicedesk' }
 end
