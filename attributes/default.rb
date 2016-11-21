@@ -36,7 +36,7 @@ default['jira']['apache2']['ssl']['error_log']        = ''
 default['jira']['apache2']['ssl']['chain_file']       = ''
 default['jira']['apache2']['ssl']['port']             = 443
 
-default['apache']['listen'] |= [ "*:#{node['jira']['apache2']['port']}", "*:#{node['jira']['apache2']['ssl']['port']}" ]
+default['apache']['listen'] = [ "*:#{node['jira']['apache2']['port']}", "*:#{node['jira']['apache2']['ssl']['port']}" ]
 
 case node['platform_family']
 when 'rhel'
