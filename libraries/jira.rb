@@ -325,6 +325,30 @@ module Jira
             'x64' => 'e0d02381d951a0f745c3e1e77e673932d504c90db757f0caa9cd22ab13a6d910',
             'tar' => 'c9c310fdf4702403f119b804907be8143366b7a9d71d0e28356fe4287a706708'
           }
+        },
+        '7.2.7' => {
+          'core' => {
+            'x32' => '89759f647b1bd2ebb77915e0dd52609f3adf3ce5af911ceb37fb66a0b9555956',
+            'x64' => '01d8a4edf45817aeff6bee3ec750c6b365bc009dffa3df56f300558b0e433c37',
+            'tar' => 'e27f2d6979beea214775e024989e6ab8de0184d47bda49be076c7b54da1b37e3'
+          },
+          'software' => {
+            'x32' => '16faa31f87bb876bb856bdace1cca3c5d4f4e25a49cc96a9b8c5ffc5953f59a2',
+            'x64' => '2564e47e924155f417706eafacdd089c69c1dfeab03a480946aeb41e8867b58e',
+            'tar' => '40c675eb1f35ca8003c3dfd952d9283bc2a69591bc641f3b40f44acacd02916c'
+          }
+        },
+        '7.3.0' => {
+          'core' => {
+            'x32' => '4e75caced513bf8561e9a03209de9ccf300a8a63523e4963f58b74488af2e7ba',
+            'x64' => '1560cb10a2394e3bf24b3eb51b3313fbf6e97305d5dabb60da961133c168bf4a',
+            'tar' => '07b47225be858eb7ad09f3b434d4865096ab10df92b0499fb234ef270500caac'
+          },
+          'software' => {
+            'x32' => '0d5df8e9001ee5d6d7d20fa678d762de35ff22f6aaadd6f206927ed286ca5498',
+            'x64' => '4e8ed1a8f480a083ad8025e0998795e6613e90cf1e67c7b1e2ab65facf327701',
+            'tar' => '20231b9e3e19b9b52a69e31c9921c9b6876624309da59c9689020dfd1f305944'
+          }
         }
       }
     end
