@@ -72,9 +72,13 @@ module Jira
       # By default we assume you want >= 7.0.0
       v = Gem::Version.new(version)
 
-      # Software had a different set of URLs for from 7.0.0 to 7.1.7
-      if node['jira']['flavor'].downcase == 'software' && (v >= Gem::Version.new('7.0.0')) && (v < Gem::Version.new('7.1.9'))
-        product = "#{base_url}/atlassian-jira-#{node['jira']['flavor']}-#{version}-jira-#{version}"
+      if node['jira']['flavor'].downcase == 'software' && (v >= Gem::Version.new('7.0.0'))
+        # Software had a different set of URLs for from 7.0.0 to 7.1.7
+        if v < Gem::Version.new('7.1.9')
+          product = "#{base_url}/atlassian-jira-#{node['jira']['flavor']}-#{version}-jira-#{version}"
+        elsif v >= Gem::Version.new('7.2')
+          product = "#{base_url}/atlassian-jira-#{node['jira']['flavor']}-#{version}"
+        end
       elsif v < Gem::Version.new(7)
         product = "#{base_url}/atlassian-jira-#{version}"
       end
