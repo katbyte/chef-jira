@@ -303,7 +303,12 @@ module Jira
             'x32' => '8d3830a74edef939f786bed35f856d41b9e50be4e137eb5926e694b7bcc7e947',
             'x64' => '4ee810e5a4fae90cf892e29047ee783cd8b67f8889b81245a4e1dd1e55bb081b'
           }
-        }
+        },
+        '3.3.2' => {
+          'servicedesk' => {
+            'x64' => '0afa1a15ab1a6349b65db16cbf17276b22e1c2caa9150cc99a33ffb2b9b61958'
+          }
+        },
       }
     end
     # rubocop:enable Metrics/MethodLength
