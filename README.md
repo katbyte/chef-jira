@@ -217,6 +217,20 @@ For a full list of contributors, please see [Github](https://github.com/afklm/ji
 
 * KLM Royal Dutch Airlines
 
+## Sponsors
+
+Development of this cookbook has been generously supported in part by
+the code contributions of the following organizations:
+
+* [University of Pennsylvania](http://www.upenn.edu/)
+  ([@bflad](https://github.com/afklm/jira/commits?author=bflad))
+* [KLM Royal Dutch Airlines](https://www.klm.com/)
+  ([@mvdkleijn](https://github.com/afklm/jira/commits?author=mvdkleijn))
+* [Parallels Inc.](https://www.parallels.com/)
+  ([@legal90](https://github.com/afklm/jira/commits?author=legal90))
+* [Blended Perspectives Inc.](http://www.blendedperspectives.com/)
+  ([@patcon](https://github.com/afklm/jira/commits?author=patcon))
+
 ## License
 
 Please see licensing information in: [LICENSE](LICENSE)
