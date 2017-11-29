@@ -1,6 +1,6 @@
 directory File.dirname(node['jira']['home_path']) do
-  owner node['jira']['user']
-  group node['jira']['group']
+  owner 'root'
+  group 'root'
   mode 00755
   action :create
   recursive true
