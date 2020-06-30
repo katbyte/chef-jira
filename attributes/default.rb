@@ -48,7 +48,7 @@ else
   default['jira']['proxy']['ssl']['port'] = 443
 end
 
-default['apache']['listen'] |= ["*:#{node['jira']['apache2']['port']}", "*:#{node['jira']['apache2']['ssl']['port']}"]
+default['apache']['listen'] = ["*:#{node['jira']['apache2']['port']}", "*:#{node['jira']['apache2']['ssl']['port']}"]
 
 case node['platform_family']
 when 'rhel'
